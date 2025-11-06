@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//oracle.fiap.com.br:1521/orcl
+    username: ${DB_USER:RM562713}
+    password: ${DB_PASS:fiap25}
+    hikari:
+      maximum-pool-size: 1
+      minimum-idle: 0
+      idle-timeout: 10000
+      connection-timeout: 30000
+      max-lifetime: 600000
+      initializationFailTimeout: 0
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+server:
+  port: 8080
