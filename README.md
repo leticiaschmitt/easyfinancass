@@ -7,19 +7,18 @@ O sistema foi desenvolvido como projeto integrador da FIAP, utilizando **Java + 
 
 ## Estrutura Geral do Projeto
 
-```
-
+``` json
 easyfinancas/
 ├── easyfinancas-api        → Backend (Java + Spring Boot + Oracle)
 └── easyfinancas-frontend   → Frontend (React + Vite)
-
-````
+```
 
 ---
 
 ## Tecnologias Utilizadas
 
 ### 🔹 Backend
+
 - **Java 17**
 - **Spring Boot**
 - **Spring Data JPA**
@@ -27,6 +26,7 @@ easyfinancas/
 - **Maven**
 
 ### 🔹 Frontend
+
 - **React**
 - **Vite**
 - **React Router DOM**
@@ -38,6 +38,7 @@ easyfinancas/
 ## Backend (API REST)
 
 ### Estrutura de Camadas
+
 O backend foi desenvolvido seguindo o padrão **MVC** e dividido em:
 
 - **Model (Entidades)** → Representa as tabelas do banco de dados  
@@ -53,7 +54,9 @@ O backend foi desenvolvido seguindo o padrão **MVC** e dividido em:
 ### Entidades Principais
 
 #### Conta
+
 Representa uma conta bancária ou carteira do usuário.
+
 ```java
 Conta {
   id: Long,
@@ -96,15 +99,15 @@ Movimentacao {
 
 ### Regras de Negócio
 
-* Atualização automática do **saldo da conta** após movimentações.
-* Impede duplicidade de categorias (mesmo nome e tipo).
-* Validações completas de existência de conta e categoria antes de inserir movimentação.
-* Códigos de status HTTP implementados corretamente:
+- Atualização automática do **saldo da conta** após movimentações.
+- Impede duplicidade de categorias (mesmo nome e tipo).
+- Validações completas de existência de conta e categoria antes de inserir movimentação.
+- Códigos de status HTTP implementados corretamente:
 
-  * `200 OK` – Sucesso
-  * `201 Created` – Criação
-  * `204 No Content` – Exclusão
-  * `400 Bad Request` – Erros de validação
+  - `200 OK` – Sucesso
+  - `201 Created` – Criação
+  - `204 No Content` – Exclusão
+  - `400 Bad Request` – Erros de validação
 
 ---
 
@@ -112,12 +115,12 @@ Movimentacao {
 
 #### 1️⃣ Configurar ambiente Oracle
 
-* Criar as tabelas na instância Oracle FIAP conforme o modelo abaixo:
+- Criar as tabelas na instância Oracle FIAP conforme o modelo abaixo:
 
-  * `TB_CONTA`
-  * `TB_CATEGORIA`
-  * `TB_MOVIMENTACAO`
-* Confirmar conexão Oracle via credenciais da FIAP.
+  - `TB_CONTA`
+  - `TB_CATEGORIA`
+  - `TB_MOVIMENTACAO`
+- Confirmar conexão Oracle via credenciais da FIAP.
 
 #### 2️⃣ Executar aplicação
 
@@ -129,7 +132,7 @@ mvn spring-boot:run
 
 #### 3️⃣ URL base da API
 
-```
+```json
 http://localhost:8080
 ```
 
@@ -208,8 +211,8 @@ curl -X POST http://localhost:8080/api/movimentacoes \
 
 ### Relacionamentos
 
-* **TB_CONTA (1)** → **(N) TB_MOVIMENTACAO**
-* **TB_CATEGORIA (1)** → **(N) TB_MOVIMENTACAO**
+- **TB_CONTA (1)** → **(N) TB_MOVIMENTACAO**
+- **TB_CATEGORIA (1)** → **(N) TB_MOVIMENTACAO**
 
 ---
 
@@ -217,21 +220,21 @@ curl -X POST http://localhost:8080/api/movimentacoes \
 
 ### 📁 Estrutura
 
-* **Páginas:**
+- **Páginas:**
 
-  * `Login`
-  * `Dashboard`
-  * `Contas`
-  * `Categorias`
-  * `Movimentações`
+  - `Login`
+  - `Dashboard`
+  - `Contas`
+  - `Categorias`
+  - `Movimentações`
 
-* **Componentes:**
+- **Componentes:**
 
-  * `Header`, `Card`, `Formulário`, `Lista`, `Gráfico (Recharts)`
+  - `Header`, `Card`, `Formulário`, `Lista`, `Gráfico (Recharts)`
 
-* **Rotas:** configuradas com `React Router DOM`
+- **Rotas:** configuradas com `React Router DOM`
 
-* **Comunicação com API:** via `Axios` (`http://localhost:8080/api`)
+- **Comunicação com API:** via `Axios` (`http://localhost:8080/api`)
 
 ---
 
@@ -245,7 +248,7 @@ npm run dev
 
 Acesse em:
 
-```
+```json
 http://localhost:5173
 ```
 
@@ -256,7 +259,7 @@ http://localhost:5173
 A autenticação é apenas **simulada** (sem backend real de login).
 Ao preencher qualquer e-mail e senha, é gerado um token fictício no `localStorage` (`ef_token`).
 
-#### Para testar:
+#### Para testar
 
 1. Vá até `/login`
 2. Informe qualquer e-mail e senha
@@ -290,31 +293,31 @@ location.reload();
 
 ### Backend
 
-* [x] Entidades Modeladas
-* [x] Repository JPA
-* [x] Camada Service com regras de negócio
-* [x] Controllers com métodos GET, POST, PUT, DELETE
-* [x] Códigos de status HTTP corretos
-* [x] Banco Oracle FIAP conectado
-* [x] Três entidades completas: Conta, Categoria, Movimentação
+- [x] Entidades Modeladas
+- [x] Repository JPA
+- [x] Camada Service com regras de negócio
+- [x] Controllers com métodos GET, POST, PUT, DELETE
+- [x] Códigos de status HTTP corretos
+- [x] Banco Oracle FIAP conectado
+- [x] Três entidades completas: Conta, Categoria, Movimentação
 
 ### Frontend
 
-* [x] Componentização
-* [x] Rotas SPA (`React Router DOM`)
-* [x] Uso de Hooks (`useState`, `useEffect`)
-* [x] Página de Login
-* [x] Dashboard e páginas de CRUD
-* [x] Conexão API REST com Backend
+- [x] Componentização
+- [x] Rotas SPA (`React Router DOM`)
+- [x] Uso de Hooks (`useState`, `useEffect`)
+- [x] Página de Login
+- [x] Dashboard e páginas de CRUD
+- [x] Conexão API REST com Backend
 
 ---
 
 ## Testes Realizados
 
-* **Testes de API:** via `cURL` e Postman
-* **Testes de integração:** Oracle + Spring Boot
-* **Testes de UI:** inserção e exclusão via frontend
-* **Dashboard dinâmico:** atualização automática do saldo
+- **Testes de API:** via `cURL` e Postman
+- **Testes de integração:** Oracle + Spring Boot
+- **Testes de UI:** inserção e exclusão via frontend
+- **Dashboard dinâmico:** atualização automática do saldo
 
 ---
 
@@ -327,7 +330,7 @@ Todas as camadas foram implementadas com boas práticas, garantindo a comunicaç
 
 ## Autora
 
-**Letícia Schmitt Rocha**
+Letícia Schmitt Rocha
 
 📍 Analista de Integrações | Desenvolvedora Full Stack em formação
 
